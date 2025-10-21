@@ -10,7 +10,6 @@
     1. Stage 1: do only [Docker for Beginners - Linux](https://training.play-with-docker.com/beginner-linux/)
     2. Stage 2: do only [Live Debugging Node.js with Docker and Visual Studio Code](https://training.play-with-docker.com/nodejs-live-debugging/)
     3. Don't do stage 3
-4. [Exerecises](https://hamk-sysadmin-docker.github.io/exercises/) - Do everything up to 2.4
 
 ### Final Exercise:
 - Create a Dockerfile that packs your code of the Fastapi code from the previous section.
