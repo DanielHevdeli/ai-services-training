@@ -4,13 +4,13 @@
 You have a single **NVIDIA H100 GPU** with **80 GB of VRAM**.  
 You are running an inference engine that uses the **traditional KV-cache mechanism** (i.e., **no Paged Attention**).  
 
-You load the model **MyLLM**, which is **20 GB** in size, with the following architecture:
+You load a Causal LM called **MyLLM** with the following architecture:
 
 - 🏗️ **Model architecture:** 3 Transformer blocks (Attention + MLP in each block)  
 - 🎯 **Multi-head attention:** 8 heads (standard, no GQA, no MLA)  
 - 📏 **Model dimension:** 2048  
 - 🔹 **Per-head dimension:** 2048 ÷ 8 = 256  
-- 📐 **Q, K, V projection weight shapes:** 2048 × 784  
+- 📐 **Q, K, V projection weight shapes:** 256 × 2048   
 - 📝 **Context length per request:** 100,000 tokens  
 
 ---
