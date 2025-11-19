@@ -18,10 +18,7 @@ You load a Causal LM called **MyLLM** with the following architecture:
 ## ⚡ Assumptions
 1. The model itself occupies **20 GB VRAM**.  
 2. All other memory (activations, temporary buffers, etc.) is negligible — only the KV-cache memory limits parallelism.  
-3. For each request, the KV cache stores **K and V** for every layer, every head, and every token.  
-4. 💾 K/V tensors are stored in **float16 (2 bytes per value)**.  
-5. The remaining memory available for KV caches is:  
-
+3. K/V tensors are stored in **float16 (2 bytes per value)**.
 
 ---
 
