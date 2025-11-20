@@ -23,26 +23,29 @@ Create a simple **Causal LM** with **3 Transformer blocks** in PyTorch.
 **Tokenizer**  
 - Vocabulary size: `20`  
 - Use the following tiny vocabulary
-0:  the
-1:  cat
-2:  dog
-3:  sat
-4:  on
-5:  mat
-6:  a
-7:  is
-8:  in
-9:  house
-10: and
-11: runs
-12: with
-13: small
-14: big
-15: jumps
-16: over
-17: under
-18: tree
-19: eats
+| ID  | Token  |
+|-----|--------|
+| 0   | the    |
+| 1   | cat    |
+| 2   | dog    |
+| 3   | sat    |
+| 4   | on     |
+| 5   | mat    |
+| 6   | a      |
+| 7   | is     |
+| 8   | in     |
+| 9   | house  |
+| 10  | and    |
+| 11  | runs   |
+| 12  | with   |
+| 13  | small  |
+| 14  | big    |
+| 15  | jumps  |
+| 16  | over   |
+| 17  | under  |
+| 18  | tree   |
+| 19  | eats   |
+
 
 **Notice:** You do not need to impelemnt a tokenization algorithm. To make things simpler (and more restrict), the model works only with those words.
 As you already know, this is not the case in the real world.
