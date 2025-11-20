@@ -20,8 +20,8 @@ Create a simple **Causal LM** with **3 Transformer blocks** in PyTorch.
 
 ### 📚 Model Configuration
 
-**Tokenizer**  
-- Vocabulary size: `20`  
+#### **Tokenizer**  
+Vocabulary size: `20`  
 Use the following tiny vocabulary:
 
 | ID  | Token  |
@@ -51,25 +51,24 @@ Use the following tiny vocabulary:
 **Notice:** You do not need to impelemnt a tokenization algorithm. To make things simpler (and more restrict), the model works only with those words.
 As you already know, this is not the case in the real world.
 
-**Embedding**  
+#### **Embedding**  
 - Model's hidden dimension (`d_model`): `64`  
 
-**Positional Encoding**  
+#### **Positional Encoding**  
 - Context length: `32`  
 
-**Attention**  
+#### **Attention**  
 - Number of heads: `1` (simpler to implement)  
 - Q, K, V dimensions: `d_model × d_model`  
 - ⚠️ **Causal masking** is important: future tokens must be hidden
 
-**MLP (Feedforward)**  
+#### **MLP (Feedforward)**  
 - 2 layers with **ReLU** activation  
 - Hidden dimension: `128`
 
-🔹 Using your tiny causal language model, print a model summary that shows:
-
+#### Model Summary
+Print a model summary that shows:
 - The number of parameters in each layer
-
 - The total number of parameters in the model
 ---
 
