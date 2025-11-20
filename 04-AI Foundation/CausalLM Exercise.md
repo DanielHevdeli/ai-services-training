@@ -87,14 +87,14 @@ To generate text from your model:
 
 ---
 
-## 💾 KV-Cache (Optional but Recommended)
+## 💾 KV-Cache
 
 To speed up autoregressive generation:
 
-- 🔹 Store **Keys (K) and Values (V)** for all previous tokens in each transformer block  
-- 🔹 During generation, only compute K and V for the **new token**, then **concatenate** with cached K and V  
-- 🔹 This reduces computation from **O(seq²)** → **O(seq)** per new token  
-- 🔹 Essential for **efficient inference** in long sequences or larger models  
+- Store **Keys (K) and Values (V)** for all previous tokens in each transformer block
+- During generation, only compute K and V for the **new token**, then **concatenate** with cached K and V
+- 🔹 This reduces computation from **O(seq²)** → **O(seq)** per new token
+- 🔹 Essential for **efficient inference** in long sequences or larger models
 
 ✨ Tip: Try running the same prompt **with and without KV-cache** and compare the timing. You should notice a significant speedup with KV caching!
 
