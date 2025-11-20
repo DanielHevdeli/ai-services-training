@@ -86,6 +86,7 @@ Be able to describe the entire training and inference processes.
 - Why can’t we train a language model from scratch for every task?
 - How does fine-tuning differ between masked and generative models?
 - What kinds of tasks require fine-tuning after pretraining?
+- Explain breifly the main differences between regular fine-tuning and LoRA (Low Rank Adaptation). Give some examples of when you would use each one.
 
 ## 5️⃣ Inside the Transformer
 **Goal:** Understand the structure of LLMs.
