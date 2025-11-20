@@ -22,7 +22,8 @@ Create a simple **Causal LM** with **3 Transformer blocks** in PyTorch.
 
 **Tokenizer**  
 - Vocabulary size: `20`  
-- Use the following tiny vocabulary
+Use the following tiny vocabulary:
+
 | ID  | Token  |
 |-----|--------|
 | 0   | the    |
