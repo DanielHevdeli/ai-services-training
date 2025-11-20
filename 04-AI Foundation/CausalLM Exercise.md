@@ -1,132 +1,72 @@
 # 🧪 Building a Tiny Causal Language Model (Inference-Only)
 
-This exercise guides you through implementing a minimal GPT-style causal language model from scratch, without training, and without using PyTorch’s built-in attention modules.  
-The focus is on architecture, tensor shapes, and inference.
+In this exercise, you'll implement a **minimal GPT-style causal language model from scratch**—no training required and **without using PyTorch’s built-in attention or transformer modules**. The focus is on understanding the **architecture**, **tensor shapes**, and performing **inference**.
+
+---
 
 ## 🎯 Goals
 
-- Understand how a causal (autoregressive) LM works
-- Implement transformer components manually
-- Perform inference on a simple prompt
-- Build a next-token generation loop
+- 🔹 Understand how a **causal (autoregressive) language model** works  
+- 🔹 Implement **transformer components manually**  
+- 🔹 Perform **inference on a simple prompt**  
+- 🔹 Build a **next-token generation loop**  
+- 🔹 Implement a **KV-cache** for faster autoregressive generation  
 
-# 🧱 Part 1 — Model Setup
+---
 
-Choose small hyperparameters:
+## 🛠 Model Implementation
 
-vocab_size   = 20–50
-max_seq_len  = 16
-d_model      = 32
-num_layers   = 1
-d_hidden     = 64
+Create a simple **Causal LM** with **3 transformer blocks** in PyTorch.  
 
-Create a simple tokenizer: a dictionary mapping words → integers.  
-(No BPE, no advanced tokenization.)
+### 📚 Model Configuration
 
-# 🔤 Part 2 — Token & Position Embeddings
+**Tokenizer**  
+- Vocabulary size: `20`  
+- Use a dummy vocabulary of your choice  
 
-## 1️⃣ Token Embedding
+**Embedding**  
+- Hidden dimension (`d_model`): `64`  
 
-Create a learnable matrix:
+**Positional Encoding**  
+- Context length: `32`  
 
-token_emb: [vocab_size × d_model]
+**Attention**  
+- Number of heads: `1` (simpler to implement)  
+- Q, K, V dimensions: `d_model × d_model`  
+- ⚠️ **Causal masking** is important: future tokens must be hidden  
 
-Lookup each token and stack them.
+**MLP (Feedforward)**  
+- 2 layers with **ReLU** activation  
+- Hidden dimension: `128`
 
-## 2️⃣ Positional Embedding
+Print a summary of the model to see how many parameters each layer has, and how many total parameters are there
 
-Create:
+---
 
-pos_emb: [max_seq_len × d_model]
+## 🌀 Next-Token Generation Loop
 
-Add embeddings element-wise:
+To generate text from your model:
 
-X = token_emb[tokens] + pos_emb[positions]
+1. 🔹 Start with a **prompt token sequence**  
+2. 🔹 For each **generation step**:
+   - Pass the **current sequence** through the model  
+   - Take the **logits for the last token**  
+   - Apply **softmax** to get probabilities  
+   - Pick the **next token** (e.g., max probability)  
+   - Append the **new token** to the sequence  
+3. 🔹 Repeat until you reach the **desired sequence length** (e.g., `50` tokens)  
 
-Shape: (seq_len, d_model)
+---
 
-# 🧠 Part 3 — Self-Attention (Manual Implementation)
+## 💾 KV-Cache (Optional but Recommended)
 
-Implement single-head attention manually.
+To speed up autoregressive generation:
 
-### Linear projections
+- 🔹 Store **Keys (K) and Values (V)** for all previous tokens in each transformer block  
+- 🔹 During generation, only compute K and V for the **new token**, then **concatenate** with cached K and V  
+- 🔹 This reduces computation from **O(seq²)** → **O(seq)** per new token  
+- 🔹 Essential for **efficient inference** in long sequences or larger models  
 
-Q = X @ Wq      # [seq_len × d_model]  
-K = X @ Wk  
-V = X @ Wv  
+✨ Tip: Try running the same prompt **with and without KV-cache** and compare the timing. You should notice a significant speedup with KV caching!
 
-### Scaled dot-product attention
-
-scores = Q @ K.T / sqrt(d_model)
-
-### Causal mask (autoregressive)
-
-Apply a lower-triangular mask so token t attends only to tokens ≤ t:
-
-mask[i, j] = 0 if j <= i else -inf
-
-scores += mask  
-attn = softmax(scores)
-
-### Attention output
-
-out = attn @ V
-
-# ⚙️ Part 4 — Feed-Forward (MLP) Block
-
-Two linear layers + activation:
-
-X → Linear(d_model → d_hidden)  
-  → GELU / ReLU  
-  → Linear(d_hidden → d_model)
-
-# 🧩 Part 5 — Transformer Block
-
-Use residual connections:
-
-X = X + Attention(LayerNorm(X))  
-X = X + MLP(LayerNorm(X))
-
-(LayerNorm is optional for simplicity.)
-
-# 🔚 Part 6 — LM Head (Projection to Vocabulary)
-
-Final linear projection:
-
-W_out: [d_model × vocab_size]  
-b_out: [vocab_size]
-
-Output logits:
-
-logits = X @ W_out + b_out
-
-Output shape: (seq_len, vocab_size)
-
-For next-token prediction, use only the last row:
-
-next_logits = logits[-1]
-
-# 🚀 Part 7 — Inference Flow
-
-1. Tokenize the input prompt  
-2. Pass tokens through:
-   - Embeddings  
-   - Transformer block  
-   - LM head  
-3. Take:
-
-logits[-1] → softmax → choose next token
-
-# 🔁 Part 8 — Generation Loop
-
-for step in range(max_new_tokens):  
-    logits = model(current_tokens)  
-    probs = softmax(logits[-1])  
-    next_token = argmax or sample(probs)  
-    append(next_token)
-
-Stop on: EOS token or max token count
-
-# 🎉 You're Done!
-
-You have implemented a tiny causal language model for **inference only**, covering embeddings, attention, causal masking, transformer blocks, and next-token generation.
+---
