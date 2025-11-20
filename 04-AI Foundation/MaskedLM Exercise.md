@@ -6,57 +6,77 @@ In this exercise, you'll implement a **minimal BERT-style transformer** from scr
 
 ## 🎯 Goals
 
-- 🔹 Understand **bidirectional attention**  
-- 🔹 Implement **transformer encoder blocks manually**  
-- 🔹 Produce **sentence embeddings directly** from the model  
-- 🔹 Integrate **averaging of token vectors** into the model architecture  
+- Understand **bidirectional attention**
+- Implement **transformer encoder blocks manually**
+- Produce **sentence embeddings** using the model  
 
 ---
 
 ## 🛠 Model Implementation
 
-Create a simple **BERT-style model** with **3 transformer encoder blocks** in PyTorch.
+Create a simple **BERT-style model** with **3 Transformer Encoder blocks** in PyTorch.
 
 ### 📚 Model Configuration
 
-**Tokenizer**  
-- Vocabulary size: `20`  
+#### **Tokenizer**  
+Vocabulary size: `20`  
+Use the following tiny vocabulary:
 
-**Embedding**  
-- Hidden dimension (`d_model`): `64`  
+| ID  | Token  |
+|-----|--------|
+| 0   | the    |
+| 1   | cat    |
+| 2   | dog    |
+| 3   | sat    |
+| 4   | on     |
+| 5   | mat    |
+| 6   | a      |
+| 7   | is     |
+| 8   | in     |
+| 9   | house  |
+| 10  | and    |
+| 11  | runs   |
+| 12  | with   |
+| 13  | small  |
+| 14  | big    |
+| 15  | jumps  |
+| 16  | over   |
+| 17  | under  |
+| 18  | tree   |
+| 19  | eats   |
 
-**Positional Encoding**  
-- Maximum sequence length: `32`  
 
-**Attention**  
-- Number of heads: `1`  
+**Notice:** You do not need to impelemnt a tokenization algorithm. To make things simpler (and more restrict), the model works only with those words.
+As you already know, this is not the case in the real world.
+
+#### **Embedding**  
+- Model hidden dimension (`d_model`): `64`
+
+#### **Positional Encoding**  
+- Maximum sequence length: `32`
+
+#### **Attention**  
+- Number of heads: `1` (keep things simple)
 - Q, K, V dimensions: `d_model × d_model`  
-- ⚠️ **Full attention**: each token attends to all others  
+- ⚠️ **Full attention**: each token attends to all others
 
-**MLP (Feedforward)**  
+#### **MLP (Feedforward)**  
 - 2 layers with **ReLU** activation  
 - Hidden dimension: `128`  
 
 **Sentence Embedding Logic**  
-- After the **last transformer block**, the model outputs **token vectors**  
-- Compute the **mean of these token vectors along the sequence dimension**  
-- The **resulting vector** is the **sentence embedding**  
+- After the **last transformer block**, the model outputs the **mean of the token vectors** as the **sentence embedding**  
 
----
-
-## 🌀 Forward Pass / Usage
-
-1. 🔹 Tokenize your input sentence  
-2. 🔹 Pass it through the **embedding + positional encoding**  
-3. 🔹 Pass through the **3 transformer encoder blocks**  
-4. 🔹 Compute the **mean of token vectors** → sentence embedding  
-5. 🔹 Output: single vector of size `d_model`  
-
+#### Model Summary
+Print a model summary that shows:
+- The number of parameters in each layer
+- The total number of parameters in the model
 ---
 
 ## 📝 Example
 
-**Input Tokens:**  
-`the cat sat on the mat`  
+**Input Tokens:**
+`the cat sat on the mat`
 
-**Model Output:**  
+**Model Output:**
+...
