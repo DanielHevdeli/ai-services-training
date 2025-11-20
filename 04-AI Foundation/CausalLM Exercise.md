@@ -1,31 +1,54 @@
 # 🧪 Building a Tiny Causal Language Model (Inference-Only)
 
-In this exercise, you'll implement a **minimal GPT-style causal language model from scratch**—no training required and **without using PyTorch’s built-in attention or transformer modules**. The focus is on understanding the **architecture**, **tensor shapes**, and performing **inference**.
+In this exercise, you'll implement a minimal GPT-style causal language model in pytorch — no training required and **without using PyTorch’s built-in attention or transformer modules**. The focus is on understanding the **architecture**, **tensor shapes**, and performing **inference**.
 
 ---
 
 ## 🎯 Goals
 
 - 🔹 Understand how a **causal (autoregressive) language model** works  
-- 🔹 Implement **transformer components manually**  
-- 🔹 Perform **inference on a simple prompt**  
+- 🔹 Implement **transformer components manually**
 - 🔹 Build a **next-token generation loop**  
-- 🔹 Implement a **KV-cache** for faster autoregressive generation  
+- 🔹 Perform **inference on some simple prompts**  
+- 🔹 Implement a **KV-cache** for faster autoregressive generation
 
 ---
 
 ## 🛠 Model Implementation
 
-Create a simple **Causal LM** with **3 transformer blocks** in PyTorch.  
+Create a simple **Causal LM** with **3 Transformer blocks** in PyTorch.  
 
 ### 📚 Model Configuration
 
 **Tokenizer**  
 - Vocabulary size: `20`  
-- Use a dummy vocabulary of your choice  
+- Use the following tiny vocabulary
+0:  the
+1:  cat
+2:  dog
+3:  sat
+4:  on
+5:  mat
+6:  a
+7:  is
+8:  in
+9:  house
+10: and
+11: runs
+12: with
+13: small
+14: big
+15: jumps
+16: over
+17: under
+18: tree
+19: eats
+
+**Notice:** You do not need to impelemnt a tokenization algorithm. To make things simpler (and more restrict), the model works only with those words.
+As you already know, this is not the case in the real world.
 
 **Embedding**  
-- Hidden dimension (`d_model`): `64`  
+- Model's hidden dimension (`d_model`): `64`  
 
 **Positional Encoding**  
 - Context length: `32`  
@@ -33,21 +56,24 @@ Create a simple **Causal LM** with **3 transformer blocks** in PyTorch.
 **Attention**  
 - Number of heads: `1` (simpler to implement)  
 - Q, K, V dimensions: `d_model × d_model`  
-- ⚠️ **Causal masking** is important: future tokens must be hidden  
+- ⚠️ **Causal masking** is important: future tokens must be hidden
 
 **MLP (Feedforward)**  
 - 2 layers with **ReLU** activation  
 - Hidden dimension: `128`
 
-Print a summary of the model to see how many parameters each layer has, and how many total parameters are there
+🔹 Using your tiny causal language model, print a model summary that shows:
 
+- The number of parameters in each layer
+
+- The total number of parameters in the model
 ---
 
 ## 🌀 Next-Token Generation Loop
 
 To generate text from your model:
 
-1. 🔹 Start with a **prompt token sequence**  
+1. 🔹 Start with a **prompt token sequence** (e.g "the cat sat")
 2. 🔹 For each **generation step**:
    - Pass the **current sequence** through the model  
    - Take the **logits for the last token**  
