@@ -6,11 +6,11 @@ In this exercise, you'll implement a minimal GPT-style causal language model in 
 
 ## 🎯 Goals
 
-- 🔹 Understand how a **causal (autoregressive) language model** works  
-- 🔹 Implement **transformer components manually**
-- 🔹 Build a **next-token generation loop**  
-- 🔹 Perform **inference on some simple prompts**  
-- 🔹 Implement a **KV-cache** for faster autoregressive generation
+- Understand how a **causal (autoregressive) language model** works  
+- Implement **transformer components manually**
+- Build a **next-token generation loop**  
+- Perform **inference on some simple prompts**  
+- Implement a **KV-cache** for faster autoregressive generation
 
 ---
 
