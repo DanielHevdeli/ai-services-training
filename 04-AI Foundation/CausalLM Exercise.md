@@ -76,14 +76,14 @@ Print a model summary that shows:
 
 To generate text from your model:
 
-1. 🔹 Start with a **prompt token sequence** (e.g "the cat sat")
-2. 🔹 For each **generation step**:
+1. Start with a **prompt token sequence** (e.g "the cat sat")
+2. For each **generation step**:
    - Pass the **current sequence** through the model  
    - Take the **logits for the last token**  
    - Apply **softmax** to get probabilities  
    - Pick the **next token** (e.g., max probability)  
    - Append the **new token** to the sequence  
-3. 🔹 Repeat until you reach the **desired sequence length** (e.g., `50` tokens)  
+3. Repeat until you reach the **desired sequence length** (e.g., `50` tokens)  
 
 ---
 
