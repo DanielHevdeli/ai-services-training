@@ -25,5 +25,6 @@ You load a Causal LM called **MyLLM** with the following architecture:
 ## ❓ Question
 For an inference engine **without Paged Attention**:
 
-1. 🧮 Compute the **KV cache size per request** based on the model description.  
-2. 🚀 Compute the **maximum number of requests** that can be served in parallel on this GPU before running out of memory.
+1. Compute the **KV cache size per request** based on the model description.  
+2. Compute the **maximum number of requests** that can be served in parallel on this GPU before running out of memory.
+3. How your previous answers will change based on the fact that the inference engine implements **Paged Attention**
