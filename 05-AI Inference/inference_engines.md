@@ -14,9 +14,9 @@
 vLLM is currently the go-to open-source engine for serving LLMs efficiently. Its main advantages are **high throughput** and **low latency**, made possible by innovations like **Paged Attention** and **Continuous Batching**.
 
 ### A) Paged Attention
-- What is a KV cache, and why is it critical for autoregressive LLM inference?
-- Before paged attention, how was memory being used during inference, and why was it inefficient?
-- How does paged attention work at a high level?
+- You remember the KV cache from earlier - it’s a key component of efficient autoregressive inference. In this section, we’ll discuss the different ways it can be stored in memory during inference.
+- Before paged attention, how was memory (KV cache) being used during inference, and why was it inefficient?
+- How does paged attention work? Explain in detail.
 - Can you relate paged attention to an old and famous concept from operating systems?
 - How does paged attention improve **throughput** and **latency**?
 - How does it impact GPU memory usage?
