@@ -87,15 +87,58 @@ To generate text from your model:
 
 ---
 
-## 💾 KV-Cache
+## 💾⚡ Speed Up Autoregressive Generation
 
-To speed up autoregressive generation:
+Go ahead — set `max_new_tokens=2000` and hit run.  
+You won’t need to go on vacation, but you *might* have time to sip a nice coffee ☕, check a notification 📱, or stretch your legs 🧘‍♂️ while your model grinds through those tokens.
 
-- Store **Keys (K) and Values (V)** for all previous tokens in each transformer block
-- During generation, only compute K and V for the **new token**, then **concatenate** with cached K and V
-- This reduces computation from **O(seq²)** → **O(seq)** per new token
-- Essential for **efficient inference** in long sequences or larger models
+Why?  
+Because right now, every time you generate the next token, your code recomputes **all** the keys and values for **all previous tokens**.  
+Sounds legit at first… but is it? 🤨  
+Do you *really* need to recompute keys and values for old tokens every single time?  
+Explain your answer in detail!
 
-✨ Run the same prompt **with and without KV-cache** and compare the timing. You should notice a significant speedup with KV caching!
+**Hint** 🔍:  
+Walk through the computation for the sequence `"the cat sat on"`.  
+Now suppose the next token is `"the"`.  
+Which parts of the attention mechanism actually depend on this new token, and which parts are just repeated work you already did?
 
 ---
+
+## 👉🧠 Your Task
+
+Think about a simple way to avoid redoing work on past tokens:
+
+- What information from previous steps could you **reuse**? ♻️  
+- Where could you **store** it? 📦  
+- How would you **update** it when a new token arrives? ➕  
+
+Implement your idea and plug it into your generation loop.
+
+When you're done — congrats! 🎉  
+You’ve just built what the field officially calls a **KV cache**.  
+This is how modern LLMs generate long sequences *without* slowing to a crawl.
+
+Now run the same prompt again and see the speed difference 🚀.
+
+---
+
+## 📊 Final Benchmarking Task
+
+1. Choose a set of generation lengths, for example:  
+   `num_tokens = [10, 20, ... , 90, 100, 200, 300, ..., 1000]`
+
+2. For each length, measure the total time to generate that many tokens:  
+   - once **without** caching 🐢  
+   - once **with** caching ⚡  
+
+3. Plot both results on the **same graph**:  
+   - **x-axis** → number of generated tokens  
+   - **y-axis** → total generation time  
+
+4. Explain the graph:  
+   - Why does the **“no cache”** curve grow much faster? 📈  
+   - What is the **rate improvement** (mathematically)? Why? 🧮  
+
+This final step will solidify your intuition for why KV caching is absolutely essential in efficient LLM inference.
+
