@@ -83,7 +83,7 @@ To generate text from your model:
    - Apply **softmax** to get probabilities  
    - Pick the **next token** (e.g., max probability)  
    - Append the **new token** to the sequence  
-3. Repeat until you reach the **desired sequence length** (e.g., `50` tokens)  
+3. Repeat until you reach the **desired sequence length** (e.g., `10` tokens)  
 
 ---
 
