@@ -89,10 +89,9 @@ To generate text from your model:
 
 ## 💾⚡ Speed Up Autoregressive Generation
 
-Go ahead — set `max_new_tokens=2000` and hit run.  
+Go ahead — increase your model's `context_length` to `10000`, set `max_new_tokens=2000` and hit run.
 You won’t need to go on vacation, but you *might* have time to sip a nice coffee ☕, check a notification 📱, or stretch your legs 🧘‍♂️ while your model grinds through those tokens.
-
-Why?  
+**Why?** 
 Because right now, every time you generate the next token, your code recomputes **all** the keys and values for **all previous tokens**.  
 Sounds legit at first… but is it? 🤨  
 Do you *really* need to recompute keys and values for old tokens every single time?  
