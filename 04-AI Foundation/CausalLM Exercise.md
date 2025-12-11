@@ -90,10 +90,15 @@ To generate text from your model:
 ## 💾⚡ Speed Up Autoregressive Generation
 
 Go ahead — increase your model's `context_length` to `10000`, set `max_new_tokens=2000` and hit run.
+
 You *might* have time to 
+
 sip a nice coffee ☕
+
 check a notification 📱
+
 stretch your legs 🧘‍♂️
+
 while your model grinds through those tokens.
 
 **Why?** 
