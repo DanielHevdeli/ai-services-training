@@ -8,9 +8,8 @@ By the end, you’ll understand:
 - Why pretrained LLMs struggle with **new, private, or evolving data**  
 - How retrieval lets models access external knowledge **without retraining**  
 - The role of **embeddings and vector databases**  
-- How retrieved context affects model responses  
-- Why selecting the right `top_k` retrieval parameter is crucial  
-
+- How retrieved context affects model responses
+- 
 You’ll use our LLMs and Embedders — ask your trainee how to interact with them.  
 
 ---
