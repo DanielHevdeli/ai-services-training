@@ -56,7 +56,7 @@ Your in-memory dictionary is just for learning how RAG works.
 
 Write a Python script that:  
 1. Takes a user question  
-2. Retrieves the top_k relevant documents from your mini vector store  
+2. Retrieves the `top_k` relevant documents from your mini vector store  
 3. Uses an LLM to generate an answer based on the retrieved context  
 
 You can choose any value for `top_k`.  
