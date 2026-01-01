@@ -1,89 +1,82 @@
-# 🧪 RAG from Scratch — Handling Data the Model Was Never Trained On
+# 🧪 RAG from Scratch — Working with Data the Model Has Never Seen
 
-## 🎯 Objective
+## 🎯 Goal
 
-This exercise builds an intuitive, hands-on understanding of **Retrieval-Augmented Generation (RAG)**.
+This exercise gives you hands-on experience with **Retrieval-Augmented Generation (RAG)**.
 
-By the end of this exercise, you should understand:
-- Why pretrained LLMs fail on **new, private, or changing data**
-- How retrieval grounds the model in external knowledge without fine-tune it
-- Why embeddings and vector databases exist
-- How retrieved context changes model behavior
-- Why choosing the right `top_k` value matters
+By the end, you’ll understand:  
+- Why pretrained LLMs struggle with **new, private, or evolving data**  
+- How retrieval lets models access external knowledge **without retraining**  
+- The role of **embeddings and vector databases**  
+- How retrieved context affects model responses  
+- Why selecting the right `top_k` retrieval parameter is crucial  
 
-You will use our LLMs and Embedders. Ask your trainee how to use them.
-
----
-
-## Step 1 — Ask a Question the Model Cannot Know 🚫📚
-
-Ask one of our LLMs the following question:
-""
-
-### Think About 🤔
-- Is the model actually wrong, or just unaware?
-- Why can’t a pretrained model access this information?
-- Would retraining the model every time data changes be realistic?
-
-💡 Key Insight  
-A pretrained LLM is **frozen in time** and has no access to your private or updated data.
+You’ll use our LLMs and Embedders — ask your trainee how to interact with them.  
 
 ---
 
-## Step 2 — Introduce External Knowledge 🗂️
+## Step 1 — Ask an “Unknowable” Question 🚫📚
 
-Now use a list of updated facts from 2025_facts.py
-As you noticed, this data lives **outside** the model and hence must be retrieved at query time.
+Ask one of our LLMs a question about thing that happened in 2025. For instance:
+"Which country was the first to recognize Somaliland, and under which Prime Minister or President did it happen?"
+Observe it's answer.
+
+### Reflection 🤔
+- Is the model actually wrong, or just **uninformed**?
+- Why can’t a pretrained model access this type of data?
+- Would retraining the model every time the data updates be realistic?
+
+💡 Insight:  
+A pretrained LLM is **frozen in time** and cannot access private or updated information.
 
 ---
 
-## Step 3 — Build a Simplified “Vector Database” 🧱
+## Step 2 — Bring in External Knowledge 🗂️
 
-Use one of our Embedders to create a simple python dictionary to funciton as our "vector database" 
+Use the list of updated facts from `2025_facts.py`.
+This data lives **outside the model** and must be retrieved **at query time**.
 
-⚠️ **IMPORTANT NOTE**  
---------------------------------------------------
-You are NOT building a real vector database here.
+---
 
-In production systems, we use **vector databases**
-(e.g. FAISS, Pinecone, Weaviate).
+## Step 3 — Create a Simple “Vector Database” 🧱
 
-Why are vector databases needed?
-- 📊 Embeddings are large numeric vectors
-- 📚 Systems often store millions of documents
-- ⚡ We need extremely fast nearest-neighbor search
-- ❌ Relational databases cannot efficiently answer:
-  “Which documents are semantically closest to this query?”
+Use one of our Embedders to create a Python dictionary to act as a **mini vector store**.  
 
-Your in-memory structure exists ONLY to understand the RAG flow.
+⚠️ **Note:**  
+You are **not building a real vector database**. In production, systems use **vector databases** like FAISS, Pinecone, or Weaviate because:  
+- Embeddings are large numeric vectors  
+- Systems store millions of documents  
+- Fast nearest-neighbor search is required  
+- Relational databases cannot efficiently find **semantically closest documents**  
+
+Your in-memory dictionary is just for learning how RAG works.  
 
 ---
 
 ## Step 4 — Implement a RAG Pipeline 🎚️🔍
 
-Choose one of our LLMs and write a python script that gets a question from the user and answer using your vector store
+Write a Python script that:  
+1. Takes a user question  
+2. Retrieves the top_k relevant documents from your mini vector store  
+3. Uses an LLM to generate an answer based on the retrieved context  
 
-Use a `top_k` of your choise
+You can choose any value for `top_k`.  
 
 ---
 
-## Step 9 — Experiment with top_k 🧪
+## Step 5 — Experiment with `top_k` 🧪
 
-Try different values for `top_k`.
+Try different `top_k` values and reflect:  
+- Does `top_k = 1` always work?  
+- When does increasing `top_k` improve answers?  
+- When does it harm answer quality?  
+- How can irrelevant context confuse the model?  
+- Summarize the trade-offs of low vs high `top_k`
 
-Reflect:
-- Does `top_k = 1` always succeed? Try it.
-- When does increasing `top_k` improve answers?
-- When does it start harming answer quality?
-- How does irrelevant context confuse the model?
-- Summarize the main Trade-offs of low vs high `top_k` (Fast, Cheap, Missing important knowledge, Noise)
-  - ❌ Risk of missing important context
-    
 ---
 
 ## ✅ Key Takeaway
 
-✨ **RAG does not make an LLM smarter.  
-It makes the LLM better informed.**
+✨ **RAG doesn’t make an LLM smarter — it makes it better informed.**  
 
-The model stays the same — only the **context and instructions** change.
+The model itself stays the same — only the **context and instructions** change.
