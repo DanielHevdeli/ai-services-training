@@ -121,6 +121,9 @@ Now that you understand how language models work — how they process tokens, us
 - How does the retrieval step influence the quality and accuracy of the final generated answer?
 - What are common challenges or limitations of RAG (e.g., hallucinations, stale data, context window limits)?
 
+**Final Exercise**
+Complete the task in `simple RAG Exercise.md`
+
 ## 2️⃣ Tool Calling (Function Calling)
 **Goal:** Enable LLMs to interact with the real world.
 
@@ -132,6 +135,9 @@ Now that you understand how language models work — how they process tokens, us
 - What are examples of useful tool integrations (e.g., calculators, APIs, databases, web search)?
 - How does tool calling expand the capabilities of an LLM beyond its pretrained knowledge?
 - What could go wrong if tool calling is poorly designed (e.g., infinite loops, security risks, data leaks)?
+
+**Final Exercise**
+Complete the task in `Tool Calling Exercise.md`
 
 ## 3️⃣ Agentic AI (In a Nutshell)
 **Goal:** Move from single LLM responses to autonomous multi-step reasoning.
