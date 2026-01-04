@@ -121,7 +121,7 @@ Now that you understand how language models work — how they process tokens, us
 - How does the retrieval step influence the quality and accuracy of the final generated answer?
 - What are common challenges or limitations of RAG (e.g., hallucinations, stale data, context window limits)?
 
-**Final Exercise**
+**Final Exercise:**
 Complete the task in `simple RAG Exercise.md`
 
 ## 2️⃣ Tool Calling (Function Calling)
@@ -136,7 +136,7 @@ Complete the task in `simple RAG Exercise.md`
 - How does tool calling expand the capabilities of an LLM beyond its pretrained knowledge?
 - What could go wrong if tool calling is poorly designed (e.g., infinite loops, security risks, data leaks)?
 
-**Final Exercise**
+**Final Exercise:**
 Complete the task in `Tool Calling Exercise.md`
 
 ## 3️⃣ Agentic AI (In a Nutshell)
