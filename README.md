@@ -1,6 +1,6 @@
 # AI Services Training
 
-A compact collection of guiding questions, exercises and small runnable demos covering core AI concepts, inference techniques, and the operational tooling needed to package and run models in production. Materials are designed for short training sessions and self‑study.
+A compact collection of guiding questions and exercises covering core AI concepts, inference techniques, and the operational tooling needed to package and run models in production. Materials are designed for short training sessions and self‑study.
 
 Primary focus
 - AI Foundation (primary)
