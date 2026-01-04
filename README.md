@@ -4,7 +4,7 @@ A compact collection of guiding questions and exercises covering core AI concept
 
 Primary focus
 - AI Foundation (primary)
-  - Purpose: a practical, concept-first roadmap that builds from "What is AI?" through classic ML, deep learning, language modelling, LLM architechtures and into applied LLM systems (RAG, tool-calling, agents, MCP). See 04-AI Foundation/ai_foundations_roadmap.md for the full lesson plan, guided questions and exercises.
+  - Purpose: a practical, concept-first roadmap that builds from "What is AI?" through classic ML, deep learning, language modelling, LLM architechtures and into applied LLM systems (RAG, tool-calling, agents, MCP). See `04-AI Foundation/ai_foundations_roadmap.md` for the full lesson plan, guided questions and exercises.
   - Structure: short conceptual sections + hands‑on labs. Key topics include:
     - What is AI and core paradigms (planning vs inductive AI)
     - Classic ML fundamentals: datasets, evaluation, regression/classification, overfitting
@@ -16,7 +16,7 @@ Primary focus
 
 - AI Inference (primary)
   - Purpose: how to serve, optimize and scale models for low‑latency, production inference.
-  - Content: tradeoffs of inference runtimes and architectures, memory/KV‑cache and paged‑attention techniques, and practical deployment guidance. See 05-AI Inference/* for exercises and notes.
+  - Content: tradeoffs of inference runtimes and architectures, memory/KV‑cache and paged‑attention techniques, and practical deployment guidance. See `05-AI Inference/*` for exercises and notes.
   - Outcome: evaluate inference engines, apply memory and latency optimizations, and prepare models for production deployment.
 
 Supporting topics
